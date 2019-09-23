@@ -7,8 +7,8 @@ import javax.xml.bind.ValidationException;
 import com.revature.charity.dao.FundRequestDAO;
 import com.revature.charity.dao.FundRequestImpl;
 import com.revature.charity.exception.DBException;
-import com.revature.charity.logger.Logger;
 import com.revature.charity.model.FundRequest;
+import com.revature.charity.util.Logger;
 import com.revature.charity.validator.FundRequestValidator;
 
 public class FundRequestServiceImpl implements FundRequestService {

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Donor;
 import com.revature.charity.util.ConnectionUtil;
+import com.revature.charity.util.Logger;
+import com.revature.charity.util.MessageConstant;
 
 public class DonorImpl implements DonorDAO{
 	/** Donor Login **/
@@ -34,7 +36,7 @@ public class DonorImpl implements DonorDAO{
 			}
 		} catch(SQLException e)
 		{
-			throw new DBException("Unable to login",e);
+			throw new DBException(MessageConstant.UNABLE_TO_LOGIN,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
 		}
@@ -50,7 +52,7 @@ public class DonorImpl implements DonorDAO{
 			conn = ConnectionUtil.getConnection();
 			String sqlStmt = "INSERT INTO donor(name,email,password,date_of_birth,gender) VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sqlStmt);
-			/** Convert local date into date **/
+			//Convert local date into date
 			Date dateOfBirth = Date.valueOf(donor.getDateOfBirth());
 			
 			pstmt.setString(1, donor.getName());
@@ -58,20 +60,22 @@ public class DonorImpl implements DonorDAO{
 			pstmt.setString(3, donor.getPassword());
 			pstmt.setDate(4, dateOfBirth);
 			pstmt.setString(5, donor.getGender());
-			/** Check user login **/
+			
 			int rows = pstmt.executeUpdate();
+			//Check user is logged in or not
 			if(rows == 1)
 			{
 				result = true;
 			}
 		} catch(SQLException e) {
-			throw new DBException("Unable to register",e);
+			Logger.error(e);
+			throw new DBException(MessageConstant.UNABLE_TO_REGISTER,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
 		}
 		return result;
 	}
-	/** Check email is exist **/
+	/** Check email is exist or not **/
 	public Donor isEmailExist(String email) throws DBException
 	{
 		Connection conn = null;
@@ -92,7 +96,7 @@ public class DonorImpl implements DonorDAO{
 			}
 		} catch(SQLException e)
 		{
-			throw new DBException("Unable to login",e);
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK_EMAIL,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
 		}

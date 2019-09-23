@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.revature.charity.logger.Logger;
-
 public class ConnectionUtil {
 	static Logger logger = new Logger();
 	/** Get connection **/

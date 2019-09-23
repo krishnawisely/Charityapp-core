@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import com.revature.charity.exception.DBException;
-import com.revature.charity.logger.Logger;
 import com.revature.charity.model.Donor;
+import com.revature.charity.util.Logger;
 
 public class DonorLoginTest {
 	@Test

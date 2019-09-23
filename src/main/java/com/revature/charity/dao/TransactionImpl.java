@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Transaction;
 import com.revature.charity.util.ConnectionUtil;
+import com.revature.charity.util.MessageConstant;
 
 public class TransactionImpl implements TransactionDAO {
 	public Boolean transaction(Transaction transaction) throws DBException
@@ -32,7 +33,7 @@ public class TransactionImpl implements TransactionDAO {
 				isStatus = true;
 			}
 		} catch(SQLException e) {
-			throw new DBException("Unable to transaction",e);
+			throw new DBException(MessageConstant.UNABLE_TO_TRANSACTION,e);
 		}
 		return isStatus;
 	}

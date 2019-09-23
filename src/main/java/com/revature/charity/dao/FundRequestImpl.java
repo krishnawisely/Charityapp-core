@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.charity.exception.DBException;
-import com.revature.charity.logger.Logger;
 import com.revature.charity.model.FundRequest;
 import com.revature.charity.util.ConnectionUtil;
+import com.revature.charity.util.Logger;
+import com.revature.charity.util.MessageConstant;
 
 public class FundRequestImpl implements FundRequestDAO {
 	/** Fund request **/
@@ -43,7 +44,7 @@ public class FundRequestImpl implements FundRequestDAO {
 				isStatus = true;
 			}
 		} catch(SQLException e){
-			throw new DBException("Unable to request",e);
+			throw new DBException(MessageConstant.UNABLE_TO_FUND_REQUEST,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
 		}
@@ -53,7 +54,6 @@ public class FundRequestImpl implements FundRequestDAO {
 	/** toRow **/
 	public FundRequest toRow(ResultSet rs)
 	{
-		Logger logger = new Logger();
 		String requestType;
 		FundRequest request = null;
 		try {
@@ -70,7 +70,7 @@ public class FundRequestImpl implements FundRequestDAO {
 			request.setAmount(neededAmount);
 			request.setExpireDate(expireDate.toLocalDate());
 		} catch (SQLException e) {
-			logger.debug(e.getMessage());
+			Logger.error(e);
 		}
 		return request;
 	}
@@ -86,14 +86,10 @@ public class FundRequestImpl implements FundRequestDAO {
 		list = new ArrayList<FundRequest>();
 		try {
 			conn = ConnectionUtil.getConnection();
-			
-//			String sqlStmt = "SELECT id,request_type,description,expire_date,"
-//					+ "("
-//					+ "SELECT IF((SUM(amount) <= fr.amount),(fr.amount - SUM(amount)),0) FROM transaction WHERE fund_request_id = fr.id GROUP BY fund_request_id HAVING SUM(amount) <= fr.amount"
-//					+ ") AS needed_amount"
-//					+ " FROM fund_request fr WHERE request_type = ? AND amount > (SELECT IFNULL(SUM(amount),0) FROM transaction WHERE fund_request_id = fr.id)";
-			String sqlStmt = "SELECT id,request_type,description,expire_date,(amount - (SELECT IFNULL(SUM(amount),0)FROM transaction WHERE fund_request_id = fr.id)) AS needed_amount FROM fund_request fr WHERE request_type = ? AND amount > (SELECT IFNULL(SUM(amount),0) FROM transaction WHERE fund_request_id = fr.id)";
-			System.out.println(sqlStmt);
+			String sqlStmt = "SELECT id,request_type,description,expire_date,"
+					+ " (amount - (SELECT IFNULL(SUM(amount),0)FROM transaction WHERE fund_request_id = fr.id)) AS needed_amount"
+					+ " FROM fund_request fr WHERE request_type = ? AND amount > (SELECT IFNULL(SUM(amount),0) FROM transaction"
+					+ " WHERE fund_request_id = fr.id)";
 			pstmt = conn.prepareStatement(sqlStmt);
 			pstmt.setString(1, requestType);
 			rs = pstmt.executeQuery();
@@ -104,8 +100,7 @@ public class FundRequestImpl implements FundRequestDAO {
 			}
 			
 		} catch(SQLException e){
-			e.printStackTrace();
-			throw new DBException("Unable to list request",e);
+			throw new DBException(MessageConstant.UNABLE_TO_LIST_FUND_REQUEST,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, rs);
 		}
