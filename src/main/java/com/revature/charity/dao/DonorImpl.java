@@ -36,6 +36,7 @@ public class DonorImpl implements DonorDAO{
 			}
 		} catch(SQLException e)
 		{
+			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_LOGIN,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
@@ -96,6 +97,7 @@ public class DonorImpl implements DonorDAO{
 			}
 		} catch(SQLException e)
 		{
+			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_CHECK_EMAIL,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);

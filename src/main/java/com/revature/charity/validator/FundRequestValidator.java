@@ -1,22 +1,22 @@
 package com.revature.charity.validator;
 
-import javax.xml.bind.ValidationException;
-
+import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.FundRequest;
+import com.revature.charity.util.MessageConstant;
 
 public class FundRequestValidator {
-	public static void fundRequest(FundRequest request) throws ValidationException
+	public static void fundRequest(FundRequest request) throws ValidatorException
 	{
 		String requestType = request.getRequestType();
 		String descrition = request.getDescription();
 		
 		if(requestType == null || "".equals(requestType))
 		{
-			throw new ValidationException("Invalid request type");
+			throw new ValidatorException(MessageConstant.INVALID_REQUEST_TYPE);
 		}
 		if(descrition == null || "".equals(descrition))
 		{
-			throw new ValidationException("Invalid description");
+			throw new ValidatorException(MessageConstant.INVALID_DESCRIPTION);
 		}
 	}
 }

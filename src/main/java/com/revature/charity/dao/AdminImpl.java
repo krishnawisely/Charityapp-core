@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Admin;
 import com.revature.charity.util.ConnectionUtil;
+import com.revature.charity.util.Logger;
 import com.revature.charity.util.MessageConstant;
 
 public class AdminImpl implements AdminDAO {
@@ -36,6 +37,7 @@ public class AdminImpl implements AdminDAO {
 			}
 		} catch(SQLException e)
 		{
+			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_LOGIN,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);

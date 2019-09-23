@@ -44,6 +44,7 @@ public class FundRequestImpl implements FundRequestDAO {
 				isStatus = true;
 			}
 		} catch(SQLException e){
+			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_FUND_REQUEST,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
@@ -100,6 +101,7 @@ public class FundRequestImpl implements FundRequestDAO {
 			}
 			
 		} catch(SQLException e){
+			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_LIST_FUND_REQUEST,e);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, rs);

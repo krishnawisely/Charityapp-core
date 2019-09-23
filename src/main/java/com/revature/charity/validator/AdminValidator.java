@@ -1,8 +1,8 @@
 package com.revature.charity.validator;
 
+import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Admin;
-
-import sun.security.validator.ValidatorException;
+import com.revature.charity.util.MessageConstant;
 
 public class AdminValidator {
 	/** Login validator **/
@@ -13,11 +13,11 @@ public class AdminValidator {
 		
 		if(email == null || "".equals(email))
 		{
-			throw new ValidatorException("Invalid email");
+			throw new ValidatorException(MessageConstant.INVALID_EMAIL);
 		}
 		if(password == null || "".equals(password))
 		{
-			throw new ValidatorException("Invalid password");
+			throw new ValidatorException(MessageConstant.INVALID_PASSWORD);
 		}
 	}
 }

@@ -15,9 +15,5 @@ public class ListFundRequestTest {
 		List<FundRequest> lists = null;
 		lists = requestService.listFundRequest("EDUCATION");
 		assertNotNull(lists);
-		for(FundRequest list  : lists)
-		{
-			System.out.println(list);
-		}
 	}
 }

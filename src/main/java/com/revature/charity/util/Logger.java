@@ -2,7 +2,7 @@ package com.revature.charity.util;
 
 public class Logger {
 	
-	public static final String level = "ERROR";
+	public static final String level = "";
 	
 	public static void debug(Object message)
 	{

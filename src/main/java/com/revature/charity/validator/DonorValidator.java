@@ -3,9 +3,11 @@ package com.revature.charity.validator;
 import com.revature.charity.dao.DonorDAO;
 import com.revature.charity.dao.DonorImpl;
 import com.revature.charity.exception.DBException;
+import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Donor;
+import com.revature.charity.util.Logger;
+import com.revature.charity.util.MessageConstant;
 
-import sun.security.validator.ValidatorException;
 
 public class DonorValidator {
 	/** Login validator **/
@@ -16,11 +18,11 @@ public class DonorValidator {
 		
 		if(email == null || "".equals(email))
 		{
-			throw new ValidatorException("Invalid email");
+			throw new ValidatorException(MessageConstant.INVALID_EMAIL);
 		}
 		if(password == null || "".equals(password))
 		{
-			throw new ValidatorException("Invalid password");
+			throw new ValidatorException(MessageConstant.INVALID_PASSWORD);
 		}
 	}
 	/** Register validator **/
@@ -35,19 +37,19 @@ public class DonorValidator {
 			donorObj = donorDao.isEmailExist(email);
 			if(donorObj != null)
 			{
-				throw new ValidatorException("Email is already exist");
+				throw new ValidatorException(MessageConstant.EMAIL_EXIST);
 			}
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			Logger.error(e);
 		}
 		
 		if(email == null || "".equals(email))
 		{
-			throw new ValidatorException("Invalid email");
+			throw new ValidatorException(MessageConstant.INVALID_EMAIL);
 		}
 		if(password == null || "".equals(password))
 		{
-			throw new ValidatorException("Invalid password");
+			throw new ValidatorException(MessageConstant.INVALID_PASSWORD);
 		}
 	}
 }
