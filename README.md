@@ -8,4 +8,4 @@ These are all things happens via this application.
 
 #### Applications
 [x]  Admin can raise request.
-[x] Donor can contribute.
+x] Donor can contribute.
