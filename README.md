@@ -14,7 +14,7 @@ These are all things happens via this application.
   - [x] Donor can contribute.
 
 - #### On going
-  - [x] Transaction
+  - [ ] Transaction
 
 - #### ToDo
-  - [x] List fund request logs to andmin
+  - [ ] List fund request logs to andmin
