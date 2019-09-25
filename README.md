@@ -26,7 +26,7 @@ These are all things happens via this application.
   - Donor Register
   - Donor Login
   - Admin Register
-  - Admin can raise fund request1
+  - Admin can raise fund request
   - Donor can contribute
 ####  Upcoming features (v1_0_1)
   - Transaction
