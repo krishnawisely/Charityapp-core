@@ -18,13 +18,15 @@ These are all things happens via this application.
 
 - #### ToDo
   - [ ]  fund list request logs to andmin.
+  - [ ] List fund request logs to andmin.
+
 
 ### CharityApp v1_0_0
 #### Features
   - Donor Register
   - Donor Login
   - Admin Register
-  - Admin can raise fund request
+  - Admin can raise fund request1
   - Donor can contribute
 ####  Upcoming features (v1_0_1)
   - Transaction
