@@ -17,7 +17,7 @@ These are all things happens via this application.
   - [ ] Transaction.
 
 - #### ToDo
-  - [ ] List fund request logs to andmin.
+  - [ ]  fund list request logs to andmin.
 
 ### CharityApp v1_0_0
 #### Features
