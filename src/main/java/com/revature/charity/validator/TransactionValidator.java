@@ -1,12 +1,25 @@
 package com.revature.charity.validator;
 
+import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Transaction;
 
-import sun.security.validator.ValidatorException;
-
 public class TransactionValidator {
+	
+	private TransactionValidator()
+	{}
+	
+	static TransactionValidator transactionValidator = null;
+	public static TransactionValidator getInstance()
+	{
+		if(transactionValidator == null)
+		{
+			transactionValidator = new TransactionValidator();
+		}
+		return transactionValidator;
+	}
+
 	/** Transaction validator **/
-	public static void loginValidator(Transaction transaction) throws ValidatorException
+	public void loginValidator(Transaction transaction) throws ValidatorException
 	{
 		Double amount = transaction.getAmount();
 		

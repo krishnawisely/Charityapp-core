@@ -4,19 +4,18 @@ import com.revature.charity.dao.AdminDAO;
 import com.revature.charity.dao.AdminImpl;
 import com.revature.charity.exception.DBException;
 import com.revature.charity.exception.ServiceException;
+import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Admin;
 import com.revature.charity.validator.AdminValidator;
-
-import sun.security.validator.ValidatorException;
 
 public class AdminServiceImpl implements AdminService {
 	public Admin adminLoginService(Admin admin) throws ServiceException
 	{
 		AdminDAO adminDao = new AdminImpl();
 		Admin adminObj = new Admin();
-		
+		AdminValidator adminValidator = AdminValidator.getInstance();
 		try {
-			AdminValidator.loginValidator(admin);
+			adminValidator.loginValidator(admin);
 			adminObj = adminDao.adminLogin(admin);
 			if(adminObj == null)
 			{

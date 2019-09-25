@@ -12,9 +12,9 @@ public class ConnectionUtil {
 		public static Connection getConnection()
 		{	
 			final String driverClass = "com.mysql.cj.jdbc.Driver";
-			final String url = "jdbc:mysql://localhost:3306/charity_app";
-			final String userName = "root";
-			final String password = "root";
+			final String url = "jdbc:mysql://trainingdb.ck1ayq0lncmp.ap-south-1.rds.amazonaws.com:3306/krishna_db";
+			final String userName = "krishna";
+			final String password = "krishna";
 			Connection conn = null;
 			try {
 				Class.forName(driverClass);

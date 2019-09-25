@@ -5,7 +5,19 @@ import com.revature.charity.model.FundRequest;
 import com.revature.charity.util.MessageConstant;
 
 public class FundRequestValidator {
-	public static void fundRequest(FundRequest request) throws ValidatorException
+	private FundRequestValidator()
+	{}
+	
+	static FundRequestValidator fundRequestValidator = new FundRequestValidator();
+	public static FundRequestValidator getInstance()
+	{
+		if(fundRequestValidator == null)
+		{
+			fundRequestValidator = new FundRequestValidator();
+		}
+		return fundRequestValidator;
+	}
+	public void fundRequest(FundRequest request) throws ValidatorException
 	{
 		String requestType = request.getRequestType();
 		String descrition = request.getDescription();

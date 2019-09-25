@@ -10,8 +10,28 @@ import com.revature.charity.util.MessageConstant;
 
 
 public class DonorValidator {
-	/** Login validator **/
-	public static void loginValidator(Donor donor) throws ValidatorException
+	
+	private DonorValidator()
+	{}
+	
+	static DonorValidator donorValidator = null;
+	
+	/**
+	 * Get instance of donor validator class 
+	**/
+	public static DonorValidator getInstance()
+	{
+		if(donorValidator == null)
+		{
+			donorValidator = new DonorValidator();
+		}
+		return donorValidator;
+	}
+	
+	/** 
+	 * Login validator 
+	 **/
+	public void loginValidator(Donor donor) throws ValidatorException
 	{
 		String email = donor.getEmail();
 		String password = donor.getPassword();
@@ -26,7 +46,7 @@ public class DonorValidator {
 		}
 	}
 	/** Register validator **/
-	public static void registerValidator(Donor donor) throws ValidatorException
+	public void registerValidator(Donor donor) throws ValidatorException
 	{
 		String email = donor.getEmail();
 		String password = donor.getPassword();
