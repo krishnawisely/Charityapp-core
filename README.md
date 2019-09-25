@@ -14,10 +14,10 @@ These are all things happens via this application.
   - [x] Donor can contribute.
 
 - #### On going
-  - [ ] Transaction
+  - [ ] Transaction.
 
 - #### ToDo
-  - [ ] List fund request logs to andmin
+  - [ ] List fund request logs to andmin.
 
 ### CharityApp v1_0_0
 #### Features
