@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ConnectionUtil {
+public final class ConnectionUtil {
 	static Logger logger = new Logger();
 	/** Get connection **/
 		public static Connection getConnection()
