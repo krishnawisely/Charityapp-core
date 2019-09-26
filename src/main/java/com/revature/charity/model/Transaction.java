@@ -57,8 +57,8 @@ public class Transaction {
 	}
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", donorId=" + fundRequestId + ", admin_id=" + donorId + ", amount=" + amount
-				+ ", date=" + date + "]";
+		return "Transaction [id=" + id + ", fundRequestId=" + fundRequestId + ", donorId=" + donorId + ", amount="
+				+ amount + ", date=" + date + "]";
 	}
 	public Integer getId() {
 		return id;

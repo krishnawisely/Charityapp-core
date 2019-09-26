@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.FundRequest;
+import com.revature.charity.util.Logger;
 
 public class ListFundRequestTypeTest {
 	@Test
@@ -15,14 +16,14 @@ public class ListFundRequestTypeTest {
 	{
 		FundRequestDAO fundRequest = new FundRequestImpl();
 		try {
-			List<FundRequest> lists = fundRequest.findByRquestType("FOOD");
+			List<FundRequest> lists = fundRequest.findByRquestType("EDUCATION");
 			for(FundRequest list : lists)
 			{
-				System.out.println(list);
+				Logger.info(list);
 			}
 			assertNotNull(lists);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			Logger.error(e.getMessage());
 		}
 	}
 }

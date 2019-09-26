@@ -14,9 +14,10 @@ public class TransactionServiceTest {
 	{
 		TransactionService service = new TransactionServiceImpl();
 		Transaction transactionObj = new Transaction();
-		transactionObj.setDonorId(1);
-		transactionObj.setfundRequestId(11);
+		transactionObj.setDonorId(5);
+		transactionObj.setfundRequestId(10);
 		transactionObj.setAmount(5000D);
+		System.out.println(transactionObj);
 		Boolean isStatus = service.transaction(transactionObj);
 		Logger.info(isStatus);
 		assertEquals(true, isStatus);

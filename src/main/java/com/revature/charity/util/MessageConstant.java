@@ -1,6 +1,6 @@
 package com.revature.charity.util;
 
-public class MessageConstant {
+public final class MessageConstant {
 			public static final String INVALID_EMAIL = "Invalid email";
 			public static final String EMAIL_EXIST = "Email is already exist";
 			public static final String INVALID_PASSWORD = "Invalid Password";
@@ -12,4 +12,5 @@ public class MessageConstant {
 			public static final String UNABLE_TO_TRANSACTION = "Unable to transaction";
 			public static final String INVALID_REQUEST_TYPE = "Invalid request type";
 			public static final String INVALID_DESCRIPTION = "Invalid description";
+			public static final String INVALID_NAME_AND_PASSWORD = "Invalid email or password";
 }

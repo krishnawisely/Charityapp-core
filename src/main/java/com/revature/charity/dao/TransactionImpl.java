@@ -30,7 +30,8 @@ public class TransactionImpl implements TransactionDAO {
 			pstmt.setInt(1, donorId);
 			pstmt.setInt(2, fundRequestId);
 			pstmt.setDouble(3, amount);
-			if(pstmt.executeUpdate() == 1)
+			int rows = pstmt.executeUpdate();
+			if(rows == 1)
 			{
 				isStatus = true;
 			}

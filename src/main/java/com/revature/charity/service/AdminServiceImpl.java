@@ -6,6 +6,7 @@ import com.revature.charity.exception.DBException;
 import com.revature.charity.exception.ServiceException;
 import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Admin;
+import com.revature.charity.util.MessageConstant;
 import com.revature.charity.validator.AdminValidator;
 
 public class AdminServiceImpl implements AdminService {
@@ -19,7 +20,7 @@ public class AdminServiceImpl implements AdminService {
 			adminObj = adminDao.adminLogin(admin);
 			if(adminObj == null)
 			{
-				throw new ServiceException("Invalid username and password");
+				throw new ServiceException(MessageConstant.INVALID_NAME_AND_PASSWORD);
 			}
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage());

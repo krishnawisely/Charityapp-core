@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Transaction;
+import com.revature.charity.util.Logger;
 
 public class TransactionTest {
 	@Test
@@ -13,15 +14,15 @@ public class TransactionTest {
 	{
 		Transaction transaction = new Transaction();
 		TransactionDAO transactionDAO = new TransactionImpl();
-		Boolean isStatus = false;
 		try {
 			transaction.setfundRequestId(2);
 			transaction.setDonorId(1);
 			transaction.setAmount(1000D);
-			isStatus = transactionDAO.transaction(transaction);
+			Boolean isStatus = transactionDAO.transaction(transaction);
+			Logger.error(isStatus);
 			assertEquals(true, isStatus);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			Logger.info(e.getMessage());
 		}
 	}
 }
