@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Donor;
@@ -103,5 +106,41 @@ public class DonorImpl implements DonorDAO{
 			ConnectionUtil.close(conn, pstmt, null);
 		}
 		return donorObj;
+	}
+	/**
+	 * List donor details
+	 * @throws DBException 
+	 * **/
+	public List<Donor> donorList() throws DBException
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;	
+		Donor donorObj = null;
+		List<Donor> list = null;
+		try {
+			list = new ArrayList<Donor>();
+			donorObj = new Donor();
+			conn = ConnectionUtil.getConnection();
+			String sqlStmt = "select id,name,email,gender,date_of_birth,active from donor";
+			pstmt = conn.prepareStatement(sqlStmt);
+			rs = pstmt.executeQuery();	
+			while(rs.next())
+			{
+				LocalDate dob = LocalDate.parse(rs.getString("date_of_birth"));
+				donorObj.setId(rs.getInt("id"));
+				donorObj.setName(rs.getString("name"));
+				donorObj.setEmail(rs.getString("email"));
+				donorObj.setPassword(rs.getString("gender"));
+				donorObj.setDateOfBirth(dob);
+				donorObj.setActive(rs.getString("active"));
+				list.add(donorObj);
+			}
+			
+		} catch(SQLException e) {
+			throw new DBException(e.getMessage());
+		}
+		
+		return list;
 	}
 }
