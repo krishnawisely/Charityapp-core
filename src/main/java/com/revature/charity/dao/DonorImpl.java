@@ -124,7 +124,7 @@ public class DonorImpl implements DonorDAO{
 			conn = ConnectionUtil.getConnection();
 			String sqlStmt = "select id,name,email,gender,date_of_birth,active from donor";
 			pstmt = conn.prepareStatement(sqlStmt);
-			rs = pstmt.executeQuery();	
+			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
 				LocalDate dob = LocalDate.parse(rs.getString("date_of_birth"));

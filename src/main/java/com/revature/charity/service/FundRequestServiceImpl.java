@@ -39,4 +39,18 @@ public class FundRequestServiceImpl implements FundRequestService {
 		}
 		return list;
 	}
+	/*
+	 * update fund request
+	 * */
+	public Boolean updateFundRequest(FundRequest fundRequest)
+	{
+		FundRequestDAO fundRequestDAO = new FundRequestImpl();
+		Boolean isFundUpdated = null;
+		try {
+			isFundUpdated = fundRequestDAO.updateRequest(fundRequest);
+		} catch (DBException e) {
+			Logger.error(e.getMessage());
+		}
+		return isFundUpdated;
+	}
 }

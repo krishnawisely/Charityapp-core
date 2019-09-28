@@ -1,0 +1,26 @@
+package com.revature.charity.service;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.revature.charity.exception.ServiceException;
+import com.revature.charity.model.Donor;
+import com.revature.charity.util.Logger;
+
+public class DonorList {
+	
+	@Test
+	public void donorListTest()
+	{
+		List<Donor> list = null;
+		try {
+			DonorService donorService = new DonorServiceImpl();
+			list = donorService.donorList();
+		} catch (ServiceException e) {
+			Logger.error(e.getMessage());
+		}
+		Logger.info(list);
+	}
+
+}

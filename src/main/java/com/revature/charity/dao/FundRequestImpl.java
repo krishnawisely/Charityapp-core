@@ -108,4 +108,33 @@ public class FundRequestImpl implements FundRequestDAO {
 		}
 		return list;
 	}
+	
+	public Boolean updateRequest(FundRequest fundRequest) throws DBException
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		Boolean isFundUpdated = false;
+		int rows = 0;
+		try {
+			conn = ConnectionUtil.getConnection();
+			String sqlStmt = "update fund_request SET request_type=?,description=?,amount=?,expire_date=? WHERE id=?";
+			
+			Date expireDate = Date.valueOf(fundRequest.getExpireDate());
+			
+			pstmt = conn.prepareStatement(sqlStmt);
+			pstmt.setString(1, fundRequest.getRequestType());
+			pstmt.setString(2, fundRequest.getDescription());
+			pstmt.setDouble(3, fundRequest.getAmount());
+			pstmt.setDate(4, expireDate);
+			pstmt.setInt(5, fundRequest.getId());
+			rows = pstmt.executeUpdate();
+			if(rows == 1)
+			{
+				isFundUpdated = true;
+			}
+		} catch(SQLException e) {
+			throw new DBException(e.getMessage());
+		}
+		return isFundUpdated;
+	}
 }

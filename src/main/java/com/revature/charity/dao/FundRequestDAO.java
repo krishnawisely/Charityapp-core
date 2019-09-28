@@ -8,4 +8,5 @@ import com.revature.charity.model.FundRequest;
 public interface FundRequestDAO {
 	public List<FundRequest> findByRquestType(String requestType) throws DBException;
 	public Boolean fundRequest(FundRequest request) throws DBException;
+	public Boolean updateRequest(FundRequest fundRequest) throws DBException;
 }

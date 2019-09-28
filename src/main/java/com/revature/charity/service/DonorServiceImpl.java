@@ -1,5 +1,7 @@
 package com.revature.charity.service;
 
+import java.util.List;
+
 import com.revature.charity.dao.DonorDAO;
 import com.revature.charity.dao.DonorImpl;
 import com.revature.charity.exception.DBException;
@@ -51,5 +53,18 @@ public class DonorServiceImpl implements DonorService{
 			throw new ServiceException(e.getMessage());
 		}
 		return result;
+	}
+	
+	public List<Donor> donorList() throws ServiceException
+	{
+		List<Donor> list = null; 
+		try
+		{
+			DonorDAO donorDAO = new DonorImpl();
+			list = donorDAO.donorList();
+		} catch(DBException e) {
+			throw new ServiceException(e.getMessage());
+		}
+		return list;
 	}
 }

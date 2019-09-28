@@ -7,4 +7,5 @@ import com.revature.charity.model.FundRequest;
 public interface FundRequestService {
 	public Boolean fundRequestService(FundRequest request);
 	public List<FundRequest> listFundRequest(String requestType);
+	public Boolean updateFundRequest(FundRequest fundRequest);
 }
