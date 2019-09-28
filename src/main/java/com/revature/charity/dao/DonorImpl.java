@@ -107,6 +107,25 @@ public class DonorImpl implements DonorDAO{
 		}
 		return donorObj;
 	}
+	
+	
+	public Donor toRow(ResultSet rs)
+	{
+		Donor donorObj = null;
+		try {
+		donorObj = new Donor();
+		LocalDate dob = LocalDate.parse(rs.getString("date_of_birth"));
+		donorObj.setId(rs.getInt("id"));
+		donorObj.setName(rs.getString("name"));
+		donorObj.setEmail(rs.getString("email"));
+		donorObj.setGender(rs.getString("gender"));
+		donorObj.setDateOfBirth(dob);
+		donorObj.setActive(rs.getString("active"));
+		} catch(SQLException e) {
+			Logger.error(e.getMessage());
+		}
+		return donorObj;
+	}
 	/**
 	 * List donor details
 	 * @throws DBException 
@@ -116,25 +135,17 @@ public class DonorImpl implements DonorDAO{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;	
-		Donor donorObj = null;
 		List<Donor> list = null;
 		try {
 			list = new ArrayList<Donor>();
-			donorObj = new Donor();
+			
 			conn = ConnectionUtil.getConnection();
 			String sqlStmt = "select id,name,email,gender,date_of_birth,active from donor";
 			pstmt = conn.prepareStatement(sqlStmt);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
-				LocalDate dob = LocalDate.parse(rs.getString("date_of_birth"));
-				donorObj.setId(rs.getInt("id"));
-				donorObj.setName(rs.getString("name"));
-				donorObj.setEmail(rs.getString("email"));
-				donorObj.setPassword(rs.getString("gender"));
-				donorObj.setDateOfBirth(dob);
-				donorObj.setActive(rs.getString("active"));
-				list.add(donorObj);
+				list.add(toRow(rs));
 			}
 			
 		} catch(SQLException e) {
