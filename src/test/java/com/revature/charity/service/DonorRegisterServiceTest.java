@@ -1,5 +1,7 @@
 package com.revature.charity.service;
 
+import static org.junit.Assert.assertEquals;
+
 import java.time.LocalDate;
 
 import org.junit.Test;
@@ -20,8 +22,10 @@ public class DonorRegisterServiceTest {
 		LocalDate dateOfBirth = LocalDate.parse("1997-06-05");
 		donor.setDateOfBirth(dateOfBirth);
 		donor.setGender("male");
+		Boolean isRegister = null;
 		try {
-			service.donorRegister(donor);
+			isRegister = service.donorRegister(donor);
+			assertEquals(false, isRegister);
 		} catch (ServiceException e) {
 			Logger.error(e.getMessage());
 		}

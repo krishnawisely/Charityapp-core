@@ -40,7 +40,7 @@ public class AdminImpl implements AdminDAO {
 			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_LOGIN,e);
 		} finally {
-			ConnectionUtil.close(conn, pstmt, null);
+			ConnectionUtil.close(conn, pstmt, rs);
 		}
 		return adminObj;
 	}

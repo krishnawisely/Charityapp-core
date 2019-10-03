@@ -12,14 +12,16 @@ public class TransactionServiceTest {
 	@Test
 	public void transactionServiceTest()
 	{
+		
 		TransactionService service = new TransactionServiceImpl();
 		Transaction transactionObj = new Transaction();
-		transactionObj.setDonorId(5);
-		transactionObj.setfundRequestId(10);
+		transactionObj.setDonorId(39);
+		transactionObj.setfundRequestId(91);
 		transactionObj.setAmount(5000D);
 		System.out.println(transactionObj);
 		Boolean isStatus = service.transaction(transactionObj);
 		Logger.info(isStatus);
 		assertEquals(true, isStatus);
+		
 	}
 }

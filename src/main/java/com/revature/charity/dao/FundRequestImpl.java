@@ -134,6 +134,8 @@ public class FundRequestImpl implements FundRequestDAO {
 			}
 		} catch(SQLException e) {
 			throw new DBException(e.getMessage());
+		} finally {
+			ConnectionUtil.close(conn, pstmt, null);
 		}
 		return isFundUpdated;
 	}

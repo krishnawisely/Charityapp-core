@@ -42,7 +42,7 @@ public class DonorImpl implements DonorDAO{
 			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_LOGIN,e);
 		} finally {
-			ConnectionUtil.close(conn, pstmt, null);
+			ConnectionUtil.close(conn, pstmt, rs);
 		}
 		return donorObj;
 	}
@@ -103,7 +103,7 @@ public class DonorImpl implements DonorDAO{
 			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_CHECK_EMAIL,e);
 		} finally {
-			ConnectionUtil.close(conn, pstmt, null);
+			ConnectionUtil.close(conn, pstmt, rs);
 		}
 		return donorObj;
 	}
@@ -150,6 +150,8 @@ public class DonorImpl implements DonorDAO{
 			
 		} catch(SQLException e) {
 			throw new DBException(e.getMessage());
+		} finally {
+			ConnectionUtil.close(conn, pstmt, rs);
 		}
 		
 		return list;

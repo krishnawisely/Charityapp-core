@@ -11,7 +11,7 @@ import com.revature.charity.util.Logger;
 import com.revature.charity.validator.FundRequestValidator;
 
 public class FundRequestServiceImpl implements FundRequestService {
-	/** Fund request service **/
+	/** Fund request **/
 	public Boolean fundRequestService(FundRequest request)
 	{
 		FundRequestDAO requestDao = new FundRequestImpl();
@@ -21,9 +21,9 @@ public class FundRequestServiceImpl implements FundRequestService {
 			fundRequestValidator.fundRequest(request);
 			isStatus = requestDao.fundRequest(request);
 		} catch (DBException e) {
-			Logger.debug(e.getMessage());
+			Logger.error(e.getMessage());
 		} catch (ValidatorException e) {
-			Logger.debug(e.getMessage());
+			Logger.error(e.getMessage());
 		}
 		return isStatus;
 	}

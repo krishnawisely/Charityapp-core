@@ -38,6 +38,8 @@ public class TransactionImpl implements TransactionDAO {
 		} catch(SQLException e) {
 			Logger.error(e);
 			throw new DBException(MessageConstant.UNABLE_TO_TRANSACTION,e);
+		} finally {
+			ConnectionUtil.close(conn, pstmt, null);
 		}
 		return isStatus;
 	}

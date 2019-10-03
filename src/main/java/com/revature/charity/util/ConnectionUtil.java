@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public final class ConnectionUtil {
-	static Logger logger = new Logger();
+public class ConnectionUtil {
+	
 	/** Get connection **/
 		public static Connection getConnection()
 		{	
@@ -22,11 +22,11 @@ public final class ConnectionUtil {
 			}
 			catch(ClassNotFoundException e)
 			{
-				logger.debug(e.getMessage());
+				Logger.error(e.getMessage());
 			}
 			catch(SQLException e)
 			{
-				logger.debug(e.getMessage());
+				Logger.error(e.getMessage());
 			}
 			return conn;
 		}
@@ -41,7 +41,7 @@ public final class ConnectionUtil {
 				if(rs != null)
 					rs.close();
 			} catch (SQLException e) {
-				logger.debug(e.getMessage());
+				Logger.error(e.getMessage());
 			}
 		}
 		

@@ -8,11 +8,12 @@ import com.revature.charity.exception.DBException;
 import com.revature.charity.exception.ServiceException;
 import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Donor;
+import com.revature.charity.util.Logger;
+import com.revature.charity.util.MessageConstant;
 import com.revature.charity.validator.DonorValidator;
 
 public class DonorServiceImpl implements DonorService{
-	/** Donor login service 
-	 * @throws ServiceException **/
+	/** Donor login **/
 	public Donor donorSignin(Donor donor) throws ServiceException
 	{
 		DonorDAO donorDao = new DonorImpl();
@@ -23,36 +24,34 @@ public class DonorServiceImpl implements DonorService{
 			donorObj = donorDao.donorLogin(donor);
 			if(donorObj == null)
 			{
-				throw new ServiceException("Invalid username and password");
+				throw new ServiceException(MessageConstant.INVALID_EMAIL_AND_PASSWORD);
 			}
 		} catch (DBException e) {
-			throw new ServiceException(e.getMessage());
+			Logger.error(e.getMessage());
 		} catch (ValidatorException e) {
-			throw new ServiceException(e.getMessage());
+			Logger.error(e.getMessage());
 		}
 		return donorObj;
 	}
-	/** Donor register service 
-	 * @throws ServiceException 
-	 * @throws DBException **/
+	/** Donor register **/
 	public Boolean donorRegister(Donor donor) throws ServiceException
 	{
-		Boolean result = false;
+		Boolean isRegister = false;
 		DonorDAO donorDao = new DonorImpl();
 		DonorValidator donorValidator = DonorValidator.getInstance();
 		try {
 			donorValidator.registerValidator(donor);
-			result = donorDao.donorRegister(donor);
-			if(!result)
+			isRegister = donorDao.donorRegister(donor);
+			if(Boolean.FALSE.equals(isRegister))
 			{
-				throw new ServiceException("Invalid register");
+				throw new ServiceException(MessageConstant.UNABLE_TO_REGISTER);
 			}
 		} catch (DBException e) {
-			throw new ServiceException(e.getMessage());
+			Logger.error(e.getMessage());
 		} catch (ValidatorException e) {
-			throw new ServiceException(e.getMessage());
+			Logger.error(e.getMessage());
 		}
-		return result;
+		return isRegister;
 	}
 	
 	public List<Donor> donorList() throws ServiceException
@@ -63,6 +62,7 @@ public class DonorServiceImpl implements DonorService{
 			DonorDAO donorDAO = new DonorImpl();
 			list = donorDAO.donorList();
 		} catch(DBException e) {
+			Logger.error(e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}
 		return list;

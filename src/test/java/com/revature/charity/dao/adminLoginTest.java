@@ -17,12 +17,11 @@ public class adminLoginTest {
 		Admin adminObj = new Admin();
 		admin.setEmail("admin@gmail.com");
 		admin.setPassword("mypass");
-		Logger logger = new Logger();
 		try {
 			adminObj = adminDAO.adminLogin(admin);
 			assertNotNull(adminObj);
 		} catch (DBException e) {
-			logger.debug(e.getMessage());
+			Logger.debug(e.getMessage());
 		}
 	}
 }

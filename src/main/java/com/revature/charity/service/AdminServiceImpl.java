@@ -10,7 +10,7 @@ import com.revature.charity.util.MessageConstant;
 import com.revature.charity.validator.AdminValidator;
 
 public class AdminServiceImpl implements AdminService {
-	public Admin adminLoginService(Admin admin) throws ServiceException
+	public Admin adminLoginService(final Admin admin) throws ServiceException
 	{
 		AdminDAO adminDao = new AdminImpl();
 		Admin adminObj = new Admin();
@@ -20,7 +20,7 @@ public class AdminServiceImpl implements AdminService {
 			adminObj = adminDao.adminLogin(admin);
 			if(adminObj == null)
 			{
-				throw new ServiceException(MessageConstant.INVALID_NAME_AND_PASSWORD);
+				throw new ServiceException(MessageConstant.INVALID_EMAIL_AND_PASSWORD);
 			}
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage());

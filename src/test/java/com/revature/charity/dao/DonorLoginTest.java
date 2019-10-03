@@ -17,12 +17,11 @@ public class DonorLoginTest {
 		Donor donorObj = new Donor();
 		donor.setEmail("krishna@gmail.com");
 		donor.setPassword("mypass");
-		Logger logger = new Logger();
 		try {
 			donorObj = donorDAO.donorLogin(donor);
 			assertNotNull(donorObj);
 		} catch (DBException e) {
-			logger.debug(e.getMessage());
+			Logger.debug(e.getMessage());
 		}
 	}
 }

@@ -1,4 +1,6 @@
 package com.revature.charity.dao;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -16,6 +18,7 @@ public class ListDonorTest {
 		try {
 			
 			list = donorObj.donorList();
+			assertNotNull(list);
 			Logger.info(list);
 		} catch (DBException e) {
 		Logger.error(e.getMessage());

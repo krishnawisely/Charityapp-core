@@ -1,5 +1,7 @@
 package com.revature.charity.service;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -17,6 +19,7 @@ public class DonorList {
 		try {
 			DonorService donorService = new DonorServiceImpl();
 			list = donorService.donorList();
+			assertNotNull(list);
 		} catch (ServiceException e) {
 			Logger.error(e.getMessage());
 		}

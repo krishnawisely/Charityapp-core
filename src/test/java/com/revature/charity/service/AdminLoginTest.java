@@ -14,14 +14,15 @@ public class AdminLoginTest {
 	{
 		AdminService serivce = new AdminServiceImpl();
 		Admin admin = new Admin();
-		Admin adminObj = new Admin();
+		Admin adminObj = null;
 		admin.setEmail("admin@gmail.com");
 		admin.setPassword("mypass");
 		try {
 			adminObj = serivce.adminLoginService(admin);
+			assertNotNull(adminObj);
 		} catch (ServiceException e) {
 			Logger.error(e.getMessage());
 		}
-		assertNotNull(adminObj);
+		
 	}
 }

@@ -12,5 +12,5 @@ public final class MessageConstant {
 			public static final String UNABLE_TO_TRANSACTION = "Unable to transaction";
 			public static final String INVALID_REQUEST_TYPE = "Invalid request type";
 			public static final String INVALID_DESCRIPTION = "Invalid description";
-			public static final String INVALID_NAME_AND_PASSWORD = "Invalid email or password";
+			public static final String INVALID_EMAIL_AND_PASSWORD = "Invalid email or password";
 }
