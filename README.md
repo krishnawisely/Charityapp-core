@@ -12,7 +12,7 @@ These are all things happens via this application.
 
   - [x]  Admin can raise request.
   - [x] Donor can contribute.
-  - [x] Transaction.
+  - [x] Donate.
 - #### On going
   - [ ] List contribute amount
 
