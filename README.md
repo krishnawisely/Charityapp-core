@@ -12,13 +12,14 @@ These are all things happens via this application.
 
   - [x]  Admin can raise request.
   - [x] Donor can contribute.
-
+  - [x] Transaction.
 - #### On going
-  - [ ] Transaction.
+  - [ ] List contribute amount
 
 - #### ToDo
   - [ ]  fund list request logs to andmin.
   - [ ] List fund request logs to andmin.
+  - [ ] Forgot password
 
 
 ### CharityApp v1_0_0
