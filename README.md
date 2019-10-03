@@ -20,6 +20,7 @@ These are all things happens via this application.
   - [ ]  fund list request logs to andmin.
   - [ ] List fund request logs to andmin.
   - [ ] Forgot password
+  - [ ] List fund request using expiry date
 
 
 ### CharityApp v1_0_0
