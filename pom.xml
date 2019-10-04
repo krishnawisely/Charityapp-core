@@ -20,6 +20,11 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.15</version>
 	</dependency>
-	
+	<!-- Mail library -->
+	<dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4.3</version>
+    </dependency>
 	</dependencies>
 </project>
