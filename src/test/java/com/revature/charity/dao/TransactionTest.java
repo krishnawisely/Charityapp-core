@@ -15,8 +15,8 @@ public class TransactionTest {
 		Transaction transaction = new Transaction();
 		TransactionDAO transactionDAO = new TransactionImpl();
 		try {
-			transaction.setfundRequestId(2);
-			transaction.setDonorId(1);
+			transaction.setfundRequestId(148);
+			transaction.setDonorId(73);
 			transaction.setAmount(1000D);
 			Boolean isStatus = transactionDAO.transaction(transaction);
 			Logger.error(isStatus);

@@ -16,7 +16,7 @@ public class UpdateFundRequestTest {
 		FundRequestService fundRequestObj = new FundRequestServiceImpl();
 		FundRequest fundRequest = new FundRequest();
 		
-		fundRequest.setId(143);
+		fundRequest.setId(148);
 		fundRequest.setRequestType("MEDICAL");
 		fundRequest.setDescription("Medic fund for heart transfer");
 		LocalDate expireDate = LocalDate.parse("2019-12-12");

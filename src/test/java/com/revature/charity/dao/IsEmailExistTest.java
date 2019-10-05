@@ -14,7 +14,7 @@ public class IsEmailExistTest {
 		DonorDAO donor = new DonorImpl();
 		Donor donorObj = new Donor();
 		try {
-			donorObj = donor.isEmailExist("krishna@gmail.com");
+			donorObj = donor.isEmailExist("krishna192168@gmail.com");
 			assertNotNull(donorObj);
 		} catch (DBException e) {
 			System.out.println(e.getMessage());

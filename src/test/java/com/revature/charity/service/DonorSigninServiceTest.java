@@ -15,8 +15,8 @@ public class DonorSigninServiceTest {
 		DonorService service = new DonorServiceImpl();
 		Donor donor = new Donor();
 		Donor donorObj = new Donor();
-		donor.setEmail("krishna@gmail.com");
-		donor.setPassword("mypass");
+		donor.setEmail("krishna192168@gmail.com");
+		donor.setPassword("mypass123");
 		try {
 			donorObj = service.donorSignin(donor);
 		} catch (ServiceException e) {

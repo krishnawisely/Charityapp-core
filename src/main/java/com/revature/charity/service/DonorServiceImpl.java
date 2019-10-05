@@ -50,6 +50,7 @@ public class DonorServiceImpl implements DonorService{
 			Logger.error(e.getMessage());
 		} catch (ValidatorException e) {
 			Logger.error(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 		return isRegister;
 	}

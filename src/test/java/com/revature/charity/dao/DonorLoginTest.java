@@ -15,8 +15,8 @@ public class DonorLoginTest {
 		DonorDAO donorDAO = new DonorImpl();
 		Donor donor = new Donor();
 		Donor donorObj = new Donor();
-		donor.setEmail("krishna@gmail.com");
-		donor.setPassword("mypass");
+		donor.setEmail("krishna192168@gmail.com");
+		donor.setPassword("mypass123");
 		try {
 			donorObj = donorDAO.donorLogin(donor);
 			assertNotNull(donorObj);
