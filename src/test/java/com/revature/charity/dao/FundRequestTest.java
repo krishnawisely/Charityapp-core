@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.FundRequest;
+import com.revature.charity.util.Logger;
 
 public class FundRequestTest {
 	@Test
@@ -26,7 +27,7 @@ public class FundRequestTest {
 			isStatus = fundRequest.fundRequest(request);
 			assertEquals(true, isStatus);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			Logger.error(e.getMessage());
 		}
 	}
 }

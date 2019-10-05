@@ -51,7 +51,7 @@ public class DonorImpl implements DonorDAO{
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		Boolean result = false;
+		Boolean IsLoggedIn = false;
 		try {
 			conn = ConnectionUtil.getConnection();
 			String sqlStmt = "INSERT INTO donor(name,email,password,date_of_birth,gender) VALUES(?,?,?,?,?)";
@@ -69,7 +69,7 @@ public class DonorImpl implements DonorDAO{
 			//Check user is logged in or not
 			if(rows == 1)
 			{
-				result = true;
+				IsLoggedIn = true;
 			}
 		} catch(SQLException e) {
 			Logger.error(e);
@@ -77,7 +77,7 @@ public class DonorImpl implements DonorDAO{
 		} finally {
 			ConnectionUtil.close(conn, pstmt, null);
 		}
-		return result;
+		return IsLoggedIn;
 	}
 	/** Check email is exist or not **/
 	public Donor isEmailExist(String email) throws DBException
