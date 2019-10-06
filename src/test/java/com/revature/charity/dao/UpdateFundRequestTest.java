@@ -18,7 +18,7 @@ public class UpdateFundRequestTest {
 		FundRequestDAO fundRequestObj = new FundRequestImpl();
 		FundRequest fundRequest = new FundRequest();
 		try {
-			fundRequest.setId(148);
+			fundRequest.setId(158);
 			fundRequest.setRequestType("Food");
 			fundRequest.setDescription("Food fund for childrens");
 			LocalDate expireDate = LocalDate.parse("2019-11-12");

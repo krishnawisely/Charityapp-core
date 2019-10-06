@@ -15,8 +15,8 @@ public class TransactionServiceTest {
 		
 		TransactionService service = new TransactionServiceImpl();
 		Transaction transactionObj = new Transaction();
-		transactionObj.setDonorId(73);
-		transactionObj.setfundRequestId(148);
+		transactionObj.setDonorId(79);
+		transactionObj.setfundRequestId(158);
 		transactionObj.setAmount(500D);
 		System.out.println(transactionObj);
 		Boolean isStatus = service.transaction(transactionObj);

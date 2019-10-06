@@ -10,4 +10,5 @@ public interface DonorDAO {
 	public Boolean donorRegister(Donor donor) throws DBException;
 	public Donor isEmailExist(String email) throws DBException;
 	public List<Donor> donorList() throws DBException;
+	public List<Donor> listFundedDonors();
 }

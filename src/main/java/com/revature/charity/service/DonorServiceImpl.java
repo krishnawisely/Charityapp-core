@@ -9,6 +9,7 @@ import com.revature.charity.exception.ServiceException;
 import com.revature.charity.exception.ValidatorException;
 import com.revature.charity.model.Donor;
 import com.revature.charity.util.Logger;
+import com.revature.charity.util.MailServiceUtil;
 import com.revature.charity.util.MessageConstant;
 import com.revature.charity.validator.DonorValidator;
 
@@ -45,7 +46,22 @@ public class DonorServiceImpl implements DonorService{
 			if(Boolean.FALSE.equals(isRegister))
 			{
 				throw new ServiceException(MessageConstant.UNABLE_TO_REGISTER);
+			} else {
+				//Email verification
+				String host = "smtp.gmail.com";
+		         String username = "krishna192168@gmail.com";
+		         String password = "tcadazgqjllzkmba";
+		         String fromAddress = "krishna192168@gmail.com";
+		         String toAddress = donor.getEmail();
+		         String subject = "Password Verification";
+		         String text = "Activate Account <a href=\"http://13.232.142.59:8080/Charityapp-frontend/\">Click here</a>";
+		         MailServiceUtil.sendMailUsingTLS(host, username, password,
+		         fromAddress, toAddress, subject, text);
+		         MailServiceUtil.sendMailUsingSSL(host, username, password, fromAddress, toAddress,
+		        subject, text);
+				//Email verification end
 			}
+			
 		} catch (DBException e) {
 			Logger.error(e.getMessage());
 		} catch (ValidatorException e) {
@@ -54,7 +70,7 @@ public class DonorServiceImpl implements DonorService{
 		}
 		return isRegister;
 	}
-	
+	/** Donor list **/
 	public List<Donor> donorList() throws ServiceException
 	{
 		List<Donor> list = null; 
@@ -66,6 +82,14 @@ public class DonorServiceImpl implements DonorService{
 			Logger.error(e.getMessage());
 			throw new ServiceException(e.getMessage());
 		}
+		return list;
+	}
+	/** list funded donors **/
+	public List<Donor> listFundedDonor()
+	{
+		DonorDAO donorDAO = new DonorImpl();
+		List<Donor> list = null;
+		list = donorDAO.listFundedDonors();
 		return list;
 	}
 }

@@ -11,6 +11,8 @@ import java.util.List;
 
 import com.revature.charity.exception.DBException;
 import com.revature.charity.model.Donor;
+import com.revature.charity.model.FundRequest;
+import com.revature.charity.model.Transaction;
 import com.revature.charity.util.ConnectionUtil;
 import com.revature.charity.util.Logger;
 import com.revature.charity.util.MessageConstant;
@@ -155,5 +157,50 @@ public class DonorImpl implements DonorDAO{
 		}
 		
 		return list;
+	}
+	/** List funded donors details **/
+	public List<Donor> listFundedDonors()
+	{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Donor> listDonor = null;
+		try {
+			listDonor = new ArrayList<Donor>();
+			
+			conn = ConnectionUtil.getConnection();
+			String sqlStmt = " SELECT fundrequest.request_type,fundrequest.description,"
+					+ "fundrequest.amount as target_amount,transaction.amount as funded_amount,"
+					+ "donor.name as donor_name,donor.email as email FROM fund_request fundrequest,transaction transaction,"
+					+ "donor donor WHERE fundrequest.id = transaction.fund_request_id AND transaction.donor_id = donor.id";
+			pstmt = conn.prepareStatement(sqlStmt);
+			rs = pstmt.executeQuery();
+			Donor donor = null;
+			Transaction transaction = null;
+			FundRequest fundrequest = null;
+			while(rs.next())
+			{
+				donor = new Donor();
+				donor.setName(rs.getString("donor_name"));
+				donor.setEmail(rs.getString("email"));
+				
+				transaction = new Transaction();
+				transaction.setAmount(rs.getDouble("funded_amount"));
+				donor.setTransaction(transaction);
+				
+				fundrequest = new FundRequest();
+				fundrequest.setAmount(rs.getDouble("target_amount"));
+				fundrequest.setDescription(rs.getString("description"));
+				fundrequest.setRequestType("request_type");
+				donor.setFundRequest(fundrequest);
+				
+				listDonor.add(donor);
+			}
+		} catch(SQLException e){
+			Logger.error(e.getMessage());
+		} finally {
+			ConnectionUtil.close(conn, pstmt, rs);
+		}
+		return listDonor;
 	}
 }

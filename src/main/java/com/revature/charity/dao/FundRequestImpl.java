@@ -111,6 +111,7 @@ public class FundRequestImpl implements FundRequestDAO {
 		return list;
 	}
 	
+	/** Update fund request **/
 	public Boolean updateRequest(FundRequest fundRequest) throws DBException
 	{
 		Connection conn = null;
@@ -141,4 +142,6 @@ public class FundRequestImpl implements FundRequestDAO {
 		}
 		return isFundUpdated;
 	}
+	
+
 }

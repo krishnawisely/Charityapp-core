@@ -11,6 +11,8 @@ public class Donor {
 	private String gender;
 	private LocalDate date;
 	private String active;
+	private FundRequest fundRequest;
+	private Transaction transaction;
 	
 	@Override
 	public String toString() {
@@ -65,4 +67,17 @@ public class Donor {
 	public void setActive(String active) {
 		this.active = active;
 	}
+	public FundRequest getFundRequest() {
+		return fundRequest;
+	}
+	public void setFundRequest(FundRequest fundRequest) {
+		this.fundRequest = fundRequest;
+	}
+	public Transaction getTransaction() {
+		return transaction;
+	}
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
+	
 }
