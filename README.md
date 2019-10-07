@@ -10,17 +10,22 @@ These are all things happens via this application.
 
 - #### Completed
 
-  - [x]  Admin can raise request.
+  - Admin
+  - [x] Admin can login.
+  - [x] Admin can see list of donors.
+  - [x] Admin can see donor funded request details.
+  - [x] Admin can update fund request.
+  - [x] Admin can raise request.
+  - Donor
+  - [x] Donor can register.
+  - [x] Donor can login.
   - [x] Donor can contribute.
-  - [x] Donate.
 - #### On going
-  - [ ] List contribute amount
-
+  - [ ] Email verification.
 - #### ToDo
-  - [ ]  fund list request logs to andmin.
-  - [ ] List fund request logs to andmin.
+  - [ ] Update admin profile.
+  - [ ] Update donor profile.
   - [ ] Forgot password
-  - [ ] List fund request using expiry date
 
 
 ### CharityApp v1_0_0
