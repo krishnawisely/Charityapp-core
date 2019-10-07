@@ -10,5 +10,5 @@ public interface DonorService {
 	public Donor donorSignin(Donor donor) throws ServiceException;
 	public Boolean donorRegister(Donor donor) throws ServiceException;
 	public List<Donor> donorList() throws ServiceException;
-	public List<Donor> listFundedDonor();
+	public List<Donor> listFundedDonor() throws ServiceException;
 }

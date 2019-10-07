@@ -84,12 +84,17 @@ public class DonorServiceImpl implements DonorService{
 		}
 		return list;
 	}
-	/** list funded donors **/
-	public List<Donor> listFundedDonor()
+	/** list funded donors 
+	 * @throws ServiceException **/
+	public List<Donor> listFundedDonor() throws ServiceException
 	{
 		DonorDAO donorDAO = new DonorImpl();
 		List<Donor> list = null;
-		list = donorDAO.listFundedDonors();
+		try {
+			list = donorDAO.listFundedDonors();
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage());
+		}
 		return list;
 	}
 }

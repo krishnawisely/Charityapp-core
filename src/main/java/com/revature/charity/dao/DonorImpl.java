@@ -158,8 +158,9 @@ public class DonorImpl implements DonorDAO{
 		
 		return list;
 	}
-	/** List funded donors details **/
-	public List<Donor> listFundedDonors()
+	/** List funded donors details 
+	 * @throws DBException **/
+	public List<Donor> listFundedDonors() throws DBException
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -191,13 +192,14 @@ public class DonorImpl implements DonorDAO{
 				fundrequest = new FundRequest();
 				fundrequest.setAmount(rs.getDouble("target_amount"));
 				fundrequest.setDescription(rs.getString("description"));
-				fundrequest.setRequestType("request_type");
+				fundrequest.setRequestType(rs.getString("request_type"));
 				donor.setFundRequest(fundrequest);
 				
 				listDonor.add(donor);
 			}
 		} catch(SQLException e){
 			Logger.error(e.getMessage());
+			throw new DBException(MessageConstant.UNABLE_TO_LIST_DONOR);
 		} finally {
 			ConnectionUtil.close(conn, pstmt, rs);
 		}

@@ -13,4 +13,5 @@ public final class MessageConstant {
 			public static final String INVALID_REQUEST_TYPE = "Invalid request type";
 			public static final String INVALID_DESCRIPTION = "Invalid description";
 			public static final String INVALID_EMAIL_AND_PASSWORD = "Invalid email or password";
+			public static final String UNABLE_TO_LIST_DONOR = "Unable to list donor";
 }
