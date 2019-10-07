@@ -4,7 +4,7 @@
 
 The objective to create this project for two kind of peoples.
 One is who need money and another one is who want to contribute.
-These are all things happens via this application.
+These are all things happens via this application on online.
 
 ### Applications
 
