@@ -1,4 +1,4 @@
-# Charityapp-core
+# CharityApp
 
 ### Synopsis
 
