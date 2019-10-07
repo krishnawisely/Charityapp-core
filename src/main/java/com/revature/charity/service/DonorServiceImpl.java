@@ -54,7 +54,7 @@ public class DonorServiceImpl implements DonorService{
 		         String fromAddress = "krishna192168@gmail.com";
 		         String toAddress = donor.getEmail();
 		         String subject = "Password Verification";
-		         String text = "Activate Account <a href=\"http://13.232.142.59:8080/Charityapp-frontend/\">Click here</a>";
+		         String text = "Thank you for register. <a href=\"http://13.232.142.59:8080/Charityapp-frontend/\">Go to Application</a>";
 		         MailServiceUtil.sendMailUsingTLS(host, username, password,
 		         fromAddress, toAddress, subject, text);
 		         MailServiceUtil.sendMailUsingSSL(host, username, password, fromAddress, toAddress,
